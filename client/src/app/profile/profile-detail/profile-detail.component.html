@@ -1,1 +1,10 @@
-<p>profile-detail works!</p>
+<div class="container">
+    <div *ngIf="member" class="list-group">
+        <a  class="list-group-item list-group-item-action active">
+            {{member.userName}}
+        </a>
+        <a  class="list-group-item list-group-item-action">{{member.name}}</a>
+        <a  class="list-group-item list-group-item-action">{{member.lastName}}</a>
+        <a  class="list-group-item list-group-item-action">{{member.gender}}</a>
+      </div>
+  </div>
