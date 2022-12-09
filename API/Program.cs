@@ -1,10 +1,5 @@
-using System.Text;
-using API.Interfaces;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
-using API.Services;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
 using API.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,12 +9,19 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddApplicationServices(builder.Configuration);
 builder.Services.AddIdentityServices(builder.Configuration);
+builder.Services.AddSwaggerGen();
 
 //pjesa lart Builder jane service, dhe nuk ndikojne direkt ne app
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 app.UseAuthentication();
 app.UseAuthorization();

@@ -70,7 +70,8 @@ namespace API.Controllers
             {
                 Username = user.UserName,
                 Token = _tokenService.CreateToken(user),
-                Name = user.Name
+                Name = user.Name,
+                Id = user.Id
             };
         }
 

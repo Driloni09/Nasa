@@ -15,6 +15,8 @@ import { AsteroidFavoriteComponent } from './asteroids/asteroid-favorite/asteroi
 import { ToastrModule } from 'ngx-toastr';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { TextInputComponent } from './_forms/text-input/text-input.component';
+import { ApiModule } from './api/api.module';
+import { environment } from 'src/environments/environment';
 
 
 @NgModule({
@@ -38,6 +40,7 @@ import { TextInputComponent } from './_forms/text-input/text-input.component';
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
     }),
+    ApiModule.forRoot({ rootUrl: environment.apiUrl})
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}

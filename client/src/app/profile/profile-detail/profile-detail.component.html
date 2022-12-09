@@ -1,10 +1,37 @@
-<div class="container">
-    <div *ngIf="member" class="list-group">
-        <a  class="list-group-item list-group-item-action active">
-            {{member.userName}}
-        </a>
-        <a  class="list-group-item list-group-item-action">{{member.name}}</a>
-        <a  class="list-group-item list-group-item-action">{{member.lastName}}</a>
-        <a  class="list-group-item list-group-item-action">{{member.gender}}</a>
+  <div class="container">
+    <div *ngIf="member">
+        <table class="table table-hover">
+            <thead>
+              <tr class="table-dark">
+                <th scope="col">Username: </th>
+                <th scope="col">{{member.userName}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Name:</th>
+                <td>{{member.name}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Last Name:</th>
+                <td> {{member.lastName}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Gender:</th>
+                <td>{{member.gender}}</td>
+              </tr>
+            </tbody>
+          </table>
       </div>
   </div>
+  
+  <!-- <div class="container">
+    <div *ngIf="member" class="list-group">
+        <a  class="list-group-item list-group-item-action active">
+         <strong> Username: </strong>&nbsp;&nbsp;  {{member.userName}}
+        </a>
+        <a  class="list-group-item list-group-item-action"><strong>Name: </strong>&nbsp;&nbsp;   {{member.name}}</a>
+        <a  class="list-group-item list-group-item-action"><strong>Last Name: </strong>&nbsp;&nbsp;   {{member.lastName}}</a>
+        <a  class="list-group-item list-group-item-action"><strong>Gender: </strong>&nbsp;&nbsp;   {{member.gender}}</a>
+      </div>
+  </div> -->

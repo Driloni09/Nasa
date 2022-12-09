@@ -1,1 +1,31 @@
-<p>asteroid-list works!</p>
+<table class="table table-hover">
+    <thead>
+      <tr class="table-dark">
+        <th scope="col">#</th>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Absolute Magnitude</th>
+        <th scope="col">Estimated Diameter</th>
+        <th scope="col">Hazardous</th>
+        <th scope="col">Favorite</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let asteroid of asteroids; let i=index;">
+        <th>{{i + 1}}</th>
+        <th scope="row">{{asteroid.id}}</th>
+        <td>{{asteroid.name}}</td>
+        <td>{{asteroid.absolute_magnitude_h}}</td>
+        <td>{{asteroid.estimated_diameter?.kilometers?.estimated_diameter_max}} km</td>
+        <td>{{(asteroid.isHazardous ? 'Yes' : 'No')}}</td>
+        <td>
+          <div class="form-check">
+            <input class="form-check-input" [checked]="asteroid.isFavorite" type="checkbox" value=""(change)="markUnmark(asteroid.id)" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              
+            </label>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>

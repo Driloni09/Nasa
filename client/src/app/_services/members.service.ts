@@ -7,7 +7,7 @@ import { Member } from '../_models/member';
   providedIn: 'root'
 })
 export class MembersService {
-  baseUrl = environment.apiUrl;
+  baseUrl = environment.apiUrl  + '/api/';
 
   constructor(private http: HttpClient) { }
 
