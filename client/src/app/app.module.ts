@@ -17,6 +17,10 @@ import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { TextInputComponent } from './_forms/text-input/text-input.component';
 import { ApiModule } from './api/api.module';
 import { environment } from 'src/environments/environment';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { LoadingInterceptor } from './_interceptors/loading.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 
 
 @NgModule({
@@ -40,11 +44,16 @@ import { environment } from 'src/environments/environment';
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
     }),
-    ApiModule.forRoot({ rootUrl: environment.apiUrl})
+    ApiModule.forRoot({ rootUrl: environment.apiUrl}),
+    BrowserAnimationsModule,
+    NgxSpinnerModule.forRoot({ 
+      type: 'ball-scale-ripple-multiple' })
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
